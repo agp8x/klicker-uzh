@@ -9,12 +9,16 @@ interface Props {
   showVotes?: boolean
   updateVotes?: any
   votes: number
+  showPin?: boolean
+  showInput?: boolean
 }
 
 const defaultProps = {
   onDelete: (f): any => f,
   showDelete: true,
-  showVotes: false,
+  showVotes: true,
+  showPin: true,
+  showInput: true,
 }
 
 const Feedback = ({
@@ -25,24 +29,45 @@ const Feedback = ({
   updateVotes,
   votes,
   onDelete,
+  showPin,
+  showInput,
 }: Props): React.ReactElement => (
-  <div className="feedback">
-    <div className="content">{content}</div>
-    {showDelete && (
-      <div className="delete">
-        <Button basic fluid icon="trash" onClick={onDelete} />
-      </div>
-    )}
+  <div className="container">
+    <div className="feedback">
+      <div className="content">{content}</div>
 
-    {showVotes && (
-      <Button className="votes" disabled={alreadyVoted} onClick={updateVotes && updateVotes()}>
-        <Icon name={alreadyVoted ? 'thumbs up' : 'thumbs up outline'} />
-        {votes}
-      </Button>
+      {showPin && (
+        <div className="pin">
+          <Button basic fluid icon="pin"></Button>
+        </div>
+      )}
+
+      {showDelete && (
+        <div className="delete">
+          <Button basic fluid icon="trash" onClick={onDelete} />
+        </div>
+      )}
+
+      {showVotes && (
+        <Button className="votes" disabled={alreadyVoted} onClick={updateVotes && updateVotes()}>
+          <Icon name={alreadyVoted ? 'thumbs up' : 'thumbs up outline'} />
+          {votes}
+        </Button>
+      )}
+    </div>
+
+    {showInput && (
+      <label htmlFor="answerInput">
+        <textarea className="answer" />
+      </label>
     )}
 
     <style jsx>{`
       @import 'src/theme';
+
+      .container {
+        flex-direction: column;
+      }
 
       .feedback {
         display: flex;
@@ -59,6 +84,11 @@ const Feedback = ({
           flex: 1;
         }
 
+        .pin {
+          flex: 0 0 1rem;
+          align-self: center;
+        }
+
         .delete {
           flex: 0 0 1rem;
           align-self: center;
@@ -73,6 +103,13 @@ const Feedback = ({
 
           border-left: 1px solid grey;
         }
+      }
+
+      .answer {
+        display: flex;
+        width: 100%;
+
+        border: 1px solid $color-primary;
       }
     `}</style>
   </div>

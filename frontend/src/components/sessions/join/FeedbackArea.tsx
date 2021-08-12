@@ -149,6 +149,8 @@ function FeedbackArea({
                     alreadyVoted={false}
                     content={content}
                     showDelete={false}
+                    showPin={false}
+                    showInput={false}
                     updateVotes={(): void => null}
                     votes={votes}
                   />
