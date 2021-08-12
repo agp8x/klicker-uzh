@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Icon } from 'semantic-ui-react'
+import { FormattedMessage } from 'react-intl'
+import { Form, Button, Icon } from 'semantic-ui-react'
 
 interface Props {
   alreadyVoted?: boolean
@@ -57,9 +58,17 @@ const Feedback = ({
     </div>
 
     {showInput && (
-      <label htmlFor="answerInput">
-        <textarea className="answer" />
-      </label>
+      <Form className="newFeedback">
+        <Form.Field>
+          <label htmlFor="answerInput">
+            <textarea className="answer" />
+          </label>
+        </Form.Field>
+
+        <Button primary disabled={false} type="submit">
+          <FormattedMessage defaultMessage="Submit" id="common.button.submit" />
+        </Button>
+      </Form>
     )}
 
     <style jsx>{`
