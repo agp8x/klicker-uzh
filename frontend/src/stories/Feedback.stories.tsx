@@ -15,5 +15,4 @@ export const Primary = Template.bind({})
 Primary.args = {
   votes: 2,
   content: 'Feedback',
-  showPin: true,
 }

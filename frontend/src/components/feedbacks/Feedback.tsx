@@ -1,5 +1,4 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 import { Form, Button, Icon } from 'semantic-ui-react'
 
 interface Props {
@@ -65,9 +64,13 @@ const Feedback = ({
           </label>
         </Form.Field>
 
-        <Button primary disabled={false} type="submit">
-          <FormattedMessage defaultMessage="Submit" id="common.button.submit" />
-        </Button>
+        <Button
+          primary
+          disabled={false}
+          type="submit"
+          content="Submit"
+          onClick={() => alert('Answer submitted!')}
+        ></Button>
       </Form>
     )}
 
