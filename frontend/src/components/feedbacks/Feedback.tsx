@@ -38,7 +38,7 @@ const Feedback = ({
 
       {showPin && (
         <div className="pin">
-          <Button basic fluid icon="pin"></Button>
+          <Button basic fluid icon="pin" onClick={() => alert('Pinned for lecturer!')}></Button>
         </div>
       )}
 
@@ -49,7 +49,7 @@ const Feedback = ({
       )}
 
       {showVotes && (
-        <Button className="votes" disabled={alreadyVoted} onClick={updateVotes && updateVotes()}>
+        <Button className="votes" disabled={alreadyVoted} onClick={() => alert('Votes: ' + votes)}>
           <Icon name={alreadyVoted ? 'thumbs up' : 'thumbs up outline'} />
           {votes}
         </Button>
